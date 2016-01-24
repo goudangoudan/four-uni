@@ -65,6 +65,11 @@ svg .ferry_path {
   stroke-dasharray: 3, 4;
 }
 
+#link1 {
+  position: relative;
+  left:210px;
+  top:50px;
+}
 @font-face {
     font-family: 'AquilineTwoRegular';
     src: url('AquilineTwo-webfont.eot');
@@ -96,6 +101,14 @@ svg .ferry_path {
 //          {'pos': [13.72900, 51.02927], 'name': 'TU-Dresden'},
 //          {'pos': [6.85243, 52.24103], 'name': 'Uni-Twente'}
 //];
+
+var link1 = d3.select("body").append("div")
+    .attr("id", "link1");
+
+var link11 = link1.append("a").attr("href", "http://goudangoudan.github.io/four-uni/aux.html");
+
+var link111 = link11.append("img").attr("src", "home.jpg")
+    .attr("style", "width:42px;height:42px;border:0");
 
 var points = [
 {x: 11.56786, y: 48.14966},
