@@ -59,7 +59,7 @@ svg .country {
   fill-opacity: 1;
 }
 
-svg .ferry_path {
+svg .fl_path {
   fill: none;
   stroke-opacity: 0.5;
   stroke-dasharray: 3, 4;
@@ -132,7 +132,7 @@ var countries = [
           {'pos': [5.29, 53.00], 'name': 'Netherlands'}
 ];
 
-var ferry_path = [
+var fl_path = [
           [11.582, 48.135],
           [16.374, 48.208],
           [13.737, 51.050],
@@ -370,25 +370,25 @@ d3.json("data.json", function(error, data) { //load data through AJAX call with 
 
 
 // flight path
-  var shipPathLine = d3.svg.line()
+  var flightPathLine = d3.svg.line()
     .interpolate("cardinal")
     .x(function(d) { return projection(d)[0]; })
     .y(function(d) { return projection(d)[1]; });
 
-  var shipPath = svg.append("path")
+  var flightPath = svg.append("path")
     .attr("id","fpath")
-    .attr("d",shipPathLine(ferry_path))
+    .attr("d",flightPathLine(fl_path))
     .attr("stroke","#000")
     .attr("stroke-width", 10)
-    .attr("class","ferry_path")
+    .attr("class","fl_path")
     .on("mouseover", hover)
     .on("mouseout",hoverout);
 
-  shipPathEl = shipPath.node();
-  shipPathElLen = shipPathEl.getTotalLength();
+  flightPathEl = flightPath.node();
+  flightPathElLen = flightPathEl.getTotalLength();
 
-  pt = shipPathEl.getPointAtLength(0);
-  var shipIcon = svg.append("image")
+  pt = flightPathEl.getPointAtLength(0);
+  var flightIcon = svg.append("image")
           .attr("id","ficon")
           //.attr("xlink:href","http://icons.iconarchive.com/icons/cheezen/web-2/128/airplane-icon.png")
           .attr("xlink:href","airplane_icon.svg")
@@ -408,9 +408,9 @@ d3.json("data.json", function(error, data) { //load data through AJAX call with 
 /*
   setInterval(function(){
     
-    pt = shipPathEl.getPointAtLength(i*shipPathElLen);
+    pt = flightPathEl.getPointAtLength(i*flightPathElLen);
     
-    shipIcon
+    flightIcon
       .transition()
       .ease("linear")
       .duration(1000)
